@@ -21,6 +21,10 @@ public class AutomaticMovement : MonoBehaviour
             isMoving = true; 
         }
 
+    }
+
+    void FixedUpdate()
+    {
         if (isMoving)
         {
             if (isMovingRight)

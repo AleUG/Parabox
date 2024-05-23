@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CollisionSystem : MonoBehaviour
+public class TriggerSystem : MonoBehaviour
 {
     public UnityEvent onEnter, onStay, onExit;
     public string tagObject;
