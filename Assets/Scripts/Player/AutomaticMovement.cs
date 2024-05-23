@@ -6,18 +6,31 @@ public class AutomaticMovement : MonoBehaviour
 {
     public float speed;
     private bool isMovingRight = true;
+    private bool isMoving = true;
 
 
     // Update is called once per frame
     void Update()
     {
-        if (isMovingRight)
+        if (Input.GetKeyDown(KeyCode.Space) && isMoving)
         {
-            transform.position += transform.right * speed * Time.deltaTime;
+            isMoving = false;
         }
-        else if (!isMovingRight)
+        else if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
         {
-            transform.position -= transform.right * speed * Time.deltaTime;
+            isMoving = true; 
+        }
+
+        if (isMoving)
+        {
+            if (isMovingRight)
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
+            else if (!isMovingRight)
+            {
+                transform.position -= transform.right * speed * Time.deltaTime;
+            }
         }
     }
 
@@ -31,5 +44,10 @@ public class AutomaticMovement : MonoBehaviour
         {
             isMovingRight = true;
         }
+    }
+
+    private void StopMoving()
+    {
+
     }
 }

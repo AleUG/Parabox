@@ -4,33 +4,40 @@ using UnityEngine;
 
 public class DragNDrop : MonoBehaviour
 {
-    Vector3 offset;
-    bool agarrado;
-    private void OnMouseDown()
-    {
-        Vector3 mp = Input.mousePosition;
-        mp.z = Camera.main.transform.position.z;
+    private Vector3 offset;
+    private bool isDragging;
+    private Collider2D col;
 
-        Vector3 wmp = Camera.main.ScreenToWorldPoint(mp);
-        offset = transform.position - wmp;
-        agarrado = true;
+    private void Awake()
+    {
+        col = GetComponent<Collider2D>();
     }
 
-    private void OnMouseDrag()
+    private void Update()
     {
-        if(agarrado)
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mp = Input.mousePosition;
-            mp.z = Camera.main.transform.position.z;
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;  // Asegúrate de que la posición Z sea 0 para objetos 2D
 
-            Vector3 wmp = Camera.main.ScreenToWorldPoint(mp);
-            transform.position = wmp + offset;
+            // Verifica si el clic se hizo sobre el objeto
+            if (col.OverlapPoint(mousePosition))
+            {
+                isDragging = !isDragging;  // Alterna el estado de arrastre
+                if (isDragging)
+                {
+                    // Calcula el offset entre la posición del objeto y la del mouse
+                    offset = transform.position - mousePosition;
+                }
+            }
         }
 
-    }
-
-    private void OnMouseUp()
-    {
-        agarrado = false;
+        if (isDragging)
+        {
+            // Mueve el objeto a la posición del mouse más el offset
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;  // Asegúrate de que la posición Z sea 0 para objetos 2D
+            transform.position = mousePosition + offset;
+        }
     }
 }
