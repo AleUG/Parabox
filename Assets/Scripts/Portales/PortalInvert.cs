@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PortalInvert : MonoBehaviour
 {
-    private GravitySystem player;
+    private PortalSystems player;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<GravitySystem>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PortalSystems>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +19,4 @@ public class PortalInvert : MonoBehaviour
             player.ChangeGravity();
         }
     }
-
-
 }

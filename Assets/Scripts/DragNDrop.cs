@@ -11,6 +11,7 @@ public class DragNDrop : MonoBehaviour
     private void Awake()
     {
         col = GetComponent<Collider2D>();
+        enabled = false;
     }
 
     private void Update()

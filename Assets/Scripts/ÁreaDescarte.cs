@@ -6,6 +6,13 @@ public class ÁreaDescarte : MonoBehaviour
 {
     bool hayPortal;
     GameObject elPortal;
+
+    private CreatePortal createPortal;
+
+    private void Start()
+    {
+        createPortal = FindAnyObjectByType<CreatePortal>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Portal"))
@@ -29,7 +36,8 @@ public class ÁreaDescarte : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0) && hayPortal)
         {
-            elPortal.SetActive(false);
+            Destroy(elPortal);
+            createPortal.RestarPortales();
         }
     }
 }

@@ -1,57 +1,89 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AutomaticMovement : MonoBehaviour
 {
     public float speed;
     private bool isMovingRight = true;
-    private bool isMoving = true;
+    public bool isMoving = true;
+    private bool canMove = true;
 
+    public float cooldownTime = 2.0f; // Tiempo de cooldown en segundos
+    private float cooldownTimer;
 
-    // Update is called once per frame
+    public Image coolDownCamuflaje; // Imagen de la barra de cooldown
+
+    private Rigidbody2D rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isMoving)
+        // Actualizar el timer del cooldown
+        if (cooldownTimer > 0)
         {
-            isMoving = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.Space) && !isMoving)
-        {
-            isMoving = true; 
+            cooldownTimer -= Time.deltaTime;
         }
 
+        // Alternar el movimiento si se presiona la tecla Espacio y el cooldown ha expirado
+        if (Input.GetKeyDown(KeyCode.Space) && canMove)
+        {
+            if (isMoving && cooldownTimer <= 0)
+            {
+                isMoving = false;
+                cooldownTimer = cooldownTime; // Reiniciar el cooldown solo al detenerse
+            }
+            else if (!isMoving)
+            {
+                isMoving = true; // Reanudar el movimiento sin cooldown
+            }
+        }
+
+        // Actualizar la barra de cooldown
+        UpdateCooldownImage();
     }
 
     void FixedUpdate()
     {
-        if (isMoving)
+        if (rb != null)
         {
-            if (isMovingRight)
+            if (isMoving)
             {
-                transform.position += transform.right * speed * Time.deltaTime;
+                if (isMovingRight)
+                {
+                    rb.velocity = new Vector2(speed, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(-speed, rb.velocity.y);
+                }
             }
-            else if (!isMovingRight)
+            else
             {
-                transform.position -= transform.right * speed * Time.deltaTime;
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
     }
 
     public void ChangeDirection()
     {
-        if(isMovingRight)
-        {
-            isMovingRight = false;
-        }
-        else if(!isMovingRight)
-        {
-            isMovingRight = true;
-        }
+        isMovingRight = !isMovingRight;
     }
 
-    private void StopMoving()
+    private void UpdateCooldownImage()
     {
+        // Actualizar la cantidad de relleno de la imagen en función del tiempo de cooldown restante
+        coolDownCamuflaje.fillAmount = 1 - (cooldownTimer / cooldownTime);
+    }
 
+    public void StopMoving(bool state)
+    {
+        isMoving = state;
+        canMove = state;
     }
 }
