@@ -5,16 +5,18 @@ using UnityEngine;
 public class PortalMini : MonoBehaviour
 {
     private PortalSystems player;
+    private DragNDrop dragNDrop;
     private bool isCooldown = false;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PortalSystems>();
+        dragNDrop = GetComponent<DragNDrop>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !isCooldown)
+        if (collision.CompareTag("Player") && !isCooldown && dragNDrop.canEffect)
         {
             isCooldown = true;
 

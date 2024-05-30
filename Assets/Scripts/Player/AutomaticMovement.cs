@@ -73,6 +73,10 @@ public class AutomaticMovement : MonoBehaviour
     public void ChangeDirection()
     {
         isMovingRight = !isMovingRight;
+
+        Vector3 currentScale = transform.localScale;
+        currentScale.x *= -1;
+        transform.localScale = currentScale;
     }
 
     private void UpdateCooldownImage()

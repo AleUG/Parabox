@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CreatePortal : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CreatePortal : MonoBehaviour
     public int limitePortales = 2;
     private bool onLimit = false;
     private int cantidadPortales = 0;
+
+    public UnityEvent onPortalCreate;
 
     public void OnButtonClick(int index)
     {
@@ -36,13 +39,17 @@ public class CreatePortal : MonoBehaviour
                 mousePosition.z = 0f; // Asegúrate de que el z sea 0 para un juego 2D
                 currentPortal = Instantiate(prefabs[index], mousePosition, Quaternion.identity);
                 isDragging = true;
+                
 
                 // Desactiva el script DragNDrop mientras se está arrastrando
                 DragNDrop dragNDrop = currentPortal.GetComponent<DragNDrop>();
                 if (dragNDrop != null)
                 {
                     dragNDrop.enabled = false;
+                    dragNDrop.canEffect = false;
                 }
+
+                
             }
         }
     }
@@ -65,9 +72,16 @@ public class CreatePortal : MonoBehaviour
 
                 // Reactiva el script DragNDrop después de soltar el portal
                 DragNDrop dragNDrop = currentPortal.GetComponent<DragNDrop>();
+                Animator animator = currentPortal.GetComponent<Animator>();
+
                 if (dragNDrop != null)
                 {
                     dragNDrop.enabled = true;
+                    dragNDrop.canEffect = true;
+
+                    animator.Play("colocar");
+
+                    onPortalCreate.Invoke();
                 }
 
                 currentPortal = null; // Libera la referencia al portal actual
