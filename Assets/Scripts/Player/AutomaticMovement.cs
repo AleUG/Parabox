@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AutomaticMovement : MonoBehaviour
 {
     public float speed;
-    private bool isMovingRight = true;
+    public bool isMovingRight = true;
     public bool isMoving = true;
     private bool canMove = true;
 
@@ -16,14 +16,38 @@ public class AutomaticMovement : MonoBehaviour
     public Image coolDownCamuflaje; // Imagen de la barra de cooldown
 
     private Rigidbody2D rb;
+    private Animator animator;
+
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip openAudio;
+    public AudioClip closeAudio;
+
+    /// CheckSuelo
+
+    public AudioClip sonidoAterrizaje;
+    public LayerMask groundLayer;
+    private bool prevGrounded;
+    private Collider2D col;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
     }
 
     void Update()
     {
+        bool grounded = col.IsTouchingLayers(groundLayer);
+
+        // Si el player estaba en el aire y ahora está en el suelo, reproducir el sonido de aterrizaje
+        if (!prevGrounded && grounded)
+        {
+            audioSource.PlayOneShot(sonidoAterrizaje);
+        }
+
+        prevGrounded = grounded;
+
         // Actualizar el timer del cooldown
         if (cooldownTimer > 0)
         {
@@ -37,11 +61,22 @@ public class AutomaticMovement : MonoBehaviour
             {
                 isMoving = false;
                 cooldownTimer = cooldownTime; // Reiniciar el cooldown solo al detenerse
+                audioSource.PlayOneShot(closeAudio);
             }
             else if (!isMoving)
             {
                 isMoving = true; // Reanudar el movimiento sin cooldown
+                audioSource.PlayOneShot(openAudio);
             }
+        }
+
+        if (isMoving)
+        {
+            animator.SetBool("hide", false);
+        }
+        else if (!isMoving)
+        {
+            animator.SetBool("hide", true);
         }
 
         // Actualizar la barra de cooldown

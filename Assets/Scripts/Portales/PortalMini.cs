@@ -8,10 +8,13 @@ public class PortalMini : MonoBehaviour
     private DragNDrop dragNDrop;
     private bool isCooldown = false;
 
+    private Animator animator;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PortalSystems>();
         dragNDrop = GetComponent<DragNDrop>();
+        animator = GameObject.Find("PanelMini").GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +33,8 @@ public class PortalMini : MonoBehaviour
                 player.isMini = true;
                 player.ChangeScaleMini();
             }
+
+            animator.SetTrigger("enter");
 
             StartCoroutine(CooldownRoutine());
         }

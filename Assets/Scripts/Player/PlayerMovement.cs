@@ -85,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
     void CheckSuelo()
     {
         // obtener la direccion del objeto calculando la posición en el frame anterior y restandole la posicion actual

@@ -13,7 +13,7 @@ public class Contador : MonoBehaviour
     private bool estrella2Quitada = false;
 
     private StarsManager starsManager;
-    private int nivelActual = 1; // Nivel actual del jugador
+    public int nivelActual = 1; // Nivel actual del jugador, configurable desde el Inspector o por otro script
     private bool tiempoDetenido = false; // Bandera para controlar si el tiempo está detenido
 
     void Start()
@@ -80,8 +80,12 @@ public class Contador : MonoBehaviour
                 }
             }
 
-            // Agregar las estrellas conseguidas al StarsManager para el nivel actual
-            starsManager.AgregarEstrella(nivelActual);
+            // Registra las estrellas conseguidas en StarsManager
+            for (int i = 0; i < estrellasConseguidas; i++)
+            {
+                starsManager.AgregarEstrella(nivelActual);
+            }
+
             print("Estrellas conseguidas: " + estrellasConseguidas);
         }
     }

@@ -152,7 +152,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 25
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!114 &3720761485884003138
 MonoBehaviour:
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3720761485884002493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,8 +240,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombresEscenas:
-  - SampleLevel
+  - "Men\xFAPrincipal"
+  - Level1
+  - Level2
   botonesCambiarEscena:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   animacionFinal: {fileID: 7400000, guid: 045612d9fd6be924dbaafe27a83e46ec, type: 2}
 --- !u!1 &8577302067895919700
@@ -311,7 +315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 2c33a62ee261eaf468e4d9dbcaf68077, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -14,6 +14,8 @@ public class CreatePortal : MonoBehaviour
     private bool onLimit = false;
     private int cantidadPortales = 0;
 
+    public string animBlocked;
+
     public UnityEvent onPortalCreate;
 
     public void OnButtonClick(int index)
@@ -104,5 +106,13 @@ public class CreatePortal : MonoBehaviour
     public void RestarPortales()
     {
         cantidadPortales--;
+    }
+
+    public void BlockPortal(Animator animator)
+    {
+        if (onLimit)
+        {
+            animator.Play(animBlocked);
+        }
     }
 }

@@ -21,10 +21,17 @@ public class StarsManager : MonoBehaviour
     public void AgregarEstrella(int nivel)
     {
         // Verificar si el nivel ya tiene 3 estrellas
-        if (ObtenerEstrellasNivel(nivel) < 3)
+        if (!estrellasPorNivel.ContainsKey(nivel))
+        {
+            // Si el nivel no está en el diccionario, inicializar con 0 estrellas
+            estrellasPorNivel[nivel] = 0;
+        }
+
+        if (estrellasPorNivel[nivel] < 3)
         {
             // Incrementar las estrellas del nivel
             estrellasPorNivel[nivel]++;
+
             // Guardar el registro actualizado en PlayerPrefs
             GuardarRegistroEstrellasPorNivel();
             // Actualizar el texto
