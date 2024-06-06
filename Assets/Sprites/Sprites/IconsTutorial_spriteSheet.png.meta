@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da619bbaa2757064eb88344ef9a2df40
+guid: 3092c6f5b3035f54292de64252d65640
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StarIcon_0
+      name: IconsTutorial_spriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1080
-        height: 1080
+        y: 1
+        width: 344
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c3a5f88c1d1ae9499d7c5f15a715254
-      internalID: -1045379052
+      spriteID: 310993836ab67374291348cdf7361532
+      internalID: -1018181700
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StarIcon_1
+      name: IconsTutorial_spriteSheet_1
       rect:
         serializedVersion: 2
-        x: 1080
+        x: 344
         y: 0
-        width: 1080
-        height: 1080
+        width: 347
+        height: 501
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +171,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db8c0ce4ed516384bbdd9326ba3e172e
-      internalID: 841190667
+      spriteID: e132feaa9fc2b7d40be9ff5a545f3255
+      internalID: 1747298210
       vertices: []
       indices: 
       edges: []
@@ -188,8 +188,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      StarIcon_0: -1045379052
-      StarIcon_1: 841190667
+      IconsTutorial_spriteSheet_0: -1018181700
+      IconsTutorial_spriteSheet_1: 1747298210
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,7 +10,7 @@ public class StarsManager : MonoBehaviour
 
     public TextMeshProUGUI textStars;
 
-    void Start()
+    void Awake()
     {
         // Cargar el registro de estrellas por nivel desde PlayerPrefs
         CargarRegistroEstrellasPorNivel();
@@ -53,7 +53,7 @@ public class StarsManager : MonoBehaviour
     {
         if (textStars != null)
         {
-            textStars.text = "x" + ObtenerEstrellasConseguidas().ToString();
+            textStars.text = "" + ObtenerEstrellasConseguidas().ToString();
         }
     }
 
@@ -84,5 +84,21 @@ public class StarsManager : MonoBehaviour
             return estrellasPorNivel[nivel];
         }
         return 0;
+    }
+
+    public void DeleteData()
+    {
+        // Borrar el registro de estrellas por nivel en PlayerPrefs
+        for (int i = 1; i <= 10; i++) // Suponiendo que hay 10 niveles (ajusta según tu juego)
+        {
+            PlayerPrefs.DeleteKey("EstrellasNivel" + i);
+        }
+        PlayerPrefs.Save();
+
+        // Reiniciar el diccionario de estrellas por nivel
+        estrellasPorNivel.Clear();
+
+        // Actualizar el texto de estrellas
+        ActualizarTextoEstrellas();
     }
 }

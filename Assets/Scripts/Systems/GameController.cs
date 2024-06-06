@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public Contador contador;
+    public StarsManager starsManager;
+    public GameObject objetoADesbloquear; // El objeto que deseas desbloquear
 
-    void Start()
+    public int starsNecesarias = 10;
+
+
+    private void Update()
     {
-        if (contador == null)
+        // Verificar si el jugador tiene al menos una cierta cantidad de estrellas para desbloquear el objeto
+        if (starsManager.ObtenerEstrellasConseguidas() >= starsNecesarias) // Cambia 10 por la cantidad necesaria de estrellas
         {
-            Debug.LogError("Contador no está asignado en el GameController");
-            return;
+            objetoADesbloquear.SetActive(false);
         }
-
-        // Establecer el nivel actual, por ejemplo, al nivel 1
-        contador.nivelActual = 1;
-
-        // Simular que el jugador ha completado el nivel y registrar las estrellas conseguidas
-        // Llamar a esta función en el momento adecuado, por ejemplo, al finalizar el nivel
-        contador.DetenerTiempoYRegistrarEstrellas();
+        else
+        {
+            objetoADesbloquear.SetActive(true);
+        }
     }
+
+
+
 }
