@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Contador : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Contador : MonoBehaviour
     public int nivelActual = 1; // Nivel actual del jugador, configurable desde el Inspector o por otro script
     private bool tiempoDetenido = false; // Bandera para controlar si el tiempo está detenido
 
+    public Animator[] starAnim;
+
     void Start()
     {
         tiempoRestante = duracionTotal;
@@ -31,25 +34,28 @@ public class Contador : MonoBehaviour
             // Quitar la primera estrella al 75% del tiempo
             if (!estrella1Quitada && tiempoRestante <= duracionTotal * 0.75f)
             {
-                stars[0].SetActive(false);
-                starsWin[0].SetActive(false);
+                starAnim[0].Play("explode");
+                StartCoroutine(DelaySetActive(stars[0], starsWin[0]));
                 estrella1Quitada = true;
+                
             }
 
             // Quitar la segunda estrella al 50% del tiempo
             if (!estrella2Quitada && tiempoRestante <= duracionTotal * 0.5f)
             {
-                stars[1].SetActive(false);
-                starsWin[1].SetActive(false);
+                starAnim[1].Play("explode");
+                StartCoroutine(DelaySetActive(stars[1], starsWin[1]));
                 estrella2Quitada = true;
+                
             }
 
             // Quitar la tercera estrella al 0% del tiempo (cuando el tiempo se acaba)
             if (tiempoRestante <= 0f)
             {
+                starAnim[2].Play("explode");
                 tiempoRestante = 0f;
-                stars[2].SetActive(false);
-                starsWin[2].SetActive(false);
+                StartCoroutine(DelaySetActive(stars[2], starsWin[2]));
+                
             }
 
             ActualizarBarra(tiempoRestante / duracionTotal);
@@ -88,5 +94,15 @@ public class Contador : MonoBehaviour
 
             print("Estrellas conseguidas: " + estrellasConseguidas);
         }
+    }
+
+    private IEnumerator DelaySetActive(GameObject stars, GameObject starsWin)
+    {
+        starsWin.SetActive(false);
+
+        yield return new WaitForSeconds(2.0f);
+
+        stars.SetActive(false);
+        
     }
 }

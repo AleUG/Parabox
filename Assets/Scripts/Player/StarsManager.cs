@@ -10,6 +10,11 @@ public class StarsManager : MonoBehaviour
 
     public TextMeshProUGUI textStars;
 
+    private void Update()
+    {
+        ActualizarTextoEstrellas();
+    }
+
     void Awake()
     {
         // Cargar el registro de estrellas por nivel desde PlayerPrefs

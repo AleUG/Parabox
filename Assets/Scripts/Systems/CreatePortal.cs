@@ -15,8 +15,26 @@ public class CreatePortal : MonoBehaviour
     private int cantidadPortales = 0;
 
     public string animBlocked;
+    private GameObject[] portalesCantidad;
 
     public UnityEvent onPortalCreate;
+
+    private void Awake()
+    {
+        // Inicializar el array portalesCantidad
+        portalesCantidad = new GameObject[2];
+        portalesCantidad[0] = GameObject.Find("portal1_full");
+        portalesCantidad[1] = GameObject.Find("portal2_full");
+
+        // Desactivar todos los portales inicialmente
+        foreach (var portal in portalesCantidad)
+        {
+            if (portal != null)
+            {
+                portal.SetActive(false);
+            }
+        }
+    }
 
     public void OnButtonClick(int index)
     {
@@ -35,13 +53,14 @@ public class CreatePortal : MonoBehaviour
                 }
 
                 cantidadPortales++;
+                UpdatePortalesCantidad(); // Actualizar el estado de los portales
 
                 // Instancia el prefab seleccionado en la posición del cursor
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePosition.z = 0f; // Asegúrate de que el z sea 0 para un juego 2D
                 currentPortal = Instantiate(prefabs[index], mousePosition, Quaternion.identity);
                 isDragging = true;
-                
+
 
                 // Desactiva el script DragNDrop mientras se está arrastrando
                 DragNDrop dragNDrop = currentPortal.GetComponent<DragNDrop>();
@@ -50,8 +69,6 @@ public class CreatePortal : MonoBehaviour
                     dragNDrop.enabled = false;
                     dragNDrop.canEffect = false;
                 }
-
-                
             }
         }
     }
@@ -93,19 +110,25 @@ public class CreatePortal : MonoBehaviour
 
     public void PortalesActuales(int limite)
     {
-        if (cantidadPortales >= limite)
-        {
-            onLimit = true;
-        }
-        else
-        {
-            onLimit = false;
-        }
+        onLimit = cantidadPortales >= limite;
     }
 
     public void RestarPortales()
     {
         cantidadPortales--;
+        UpdatePortalesCantidad(); // Actualizar el estado de los portales
+    }
+
+    private void UpdatePortalesCantidad()
+    {
+        // Actualizar el estado de los portales en el array portalesCantidad
+        for (int i = 0; i < portalesCantidad.Length; i++)
+        {
+            if (portalesCantidad[i] != null)
+            {
+                portalesCantidad[i].SetActive(i < cantidadPortales);
+            }
+        }
     }
 
     public void BlockPortal(Animator animator)

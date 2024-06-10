@@ -44,7 +44,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 4
   m_SortAtRoot: 0
 --- !u!114 &3183409180667579691
 MonoBehaviour:
@@ -278,8 +278,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.554
   m_LocalBounds:
-    m_Center: {x: -0.09529996, y: -9.35115, z: 0}
-    m_Extent: {x: 2.9154, y: 9.41715, z: 0}
+    m_Center: {x: -0.029999971, y: -9.35115, z: 0}
+    m_Extent: {x: 2.9807, y: 9.41715, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_ShapePath:
   - {x: -1.7411826, y: -11.928861, z: 0}
   - {x: 0, y: -17.5, z: 0}
-  - {x: 1.5514781, y: -11.834008, z: 0}
+  - {x: 1.682889, y: -11.834008, z: 0}
   - {x: 0.22392273, y: -1.2044919, z: 0}
   - {x: -0.22135735, y: -1.2077296, z: 0}
 --- !u!95 &2343849294005677146
@@ -395,9 +395,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.21966648, y: -1.2100298}
       - {x: -0.2158671, y: -1.2123184}
-      - {x: -1.7685621, y: -11.91875}
+      - {x: -1.8964121, y: -11.923575}
       - {x: -0.022859573, y: -15.325528}
-      - {x: 1.5730159, y: -11.937822}
+      - {x: 1.8540363, y: -11.896332}
   m_UseDelaunayMesh: 0
 --- !u!114 &2885744339836150875
 MonoBehaviour:

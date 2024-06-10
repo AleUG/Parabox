@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Enemy : MonoBehaviour
 {
-    private float time = 0.5f;
+    private float time = 0.3f;
 
     private bool isStay = false;
 

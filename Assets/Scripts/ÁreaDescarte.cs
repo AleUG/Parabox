@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ÁreaDescarte : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class ÁreaDescarte : MonoBehaviour
     GameObject elPortal;
 
     private CreatePortal createPortal;
+    private Animator UIDescarte;
 
     private void Start()
     {
         createPortal = FindAnyObjectByType<CreatePortal>();
+        UIDescarte = GameObject.Find("MarcoUI").GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +22,7 @@ public class ÁreaDescarte : MonoBehaviour
         {
             hayPortal = true;
             elPortal = collision.gameObject;
+            UIDescarte.Play("descarte");
         }
     }
 
@@ -29,6 +33,7 @@ public class ÁreaDescarte : MonoBehaviour
         {
             hayPortal = false;
             elPortal = null;
+            UIDescarte.Play("back");
         }
     }
 

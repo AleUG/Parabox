@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class AutomaticMovement : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class AutomaticMovement : MonoBehaviour
     public LayerMask groundLayer;
     private bool prevGrounded;
     private Collider2D col;
+
+    public UnityEvent onCamuflaje, exitCamuflaje;
 
     void Awake()
     {
@@ -62,11 +65,13 @@ public class AutomaticMovement : MonoBehaviour
                 isMoving = false;
                 cooldownTimer = cooldownTime; // Reiniciar el cooldown solo al detenerse
                 audioSource.PlayOneShot(closeAudio);
+                onCamuflaje.Invoke();
             }
             else if (!isMoving)
             {
                 isMoving = true; // Reanudar el movimiento sin cooldown
                 audioSource.PlayOneShot(openAudio);
+                exitCamuflaje.Invoke();
             }
         }
 
