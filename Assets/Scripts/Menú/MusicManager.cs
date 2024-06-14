@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 public class MusicManager : MonoBehaviour
 {
     private static MusicManager instance = null;
-
     public static MusicManager Instance
     {
         get { return instance; }
     }
+
+    // Arreglo de nombres de escenas en las que la música debe desactivarse
+    public string[] scenesToDisableMusic;
 
     void Awake()
     {
@@ -36,8 +38,8 @@ public class MusicManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Verificar si la escena cargada es el menú principal
-        if (scene.name == "MenúPrincipal")
+        // Verificar si la escena cargada está en el arreglo de escenas para desactivar la música
+        if (System.Array.Exists(scenesToDisableMusic, element => element == scene.name))
         {
             gameObject.SetActive(false);
         }

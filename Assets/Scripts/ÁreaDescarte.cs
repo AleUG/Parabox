@@ -10,11 +10,13 @@ public class ÁreaDescarte : MonoBehaviour
 
     private CreatePortal createPortal;
     private Animator UIDescarte;
+    private AudioSource audioSource;
 
     private void Start()
     {
         createPortal = FindAnyObjectByType<CreatePortal>();
         UIDescarte = GameObject.Find("MarcoUI").GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,6 +45,7 @@ public class ÁreaDescarte : MonoBehaviour
         {
             Destroy(elPortal);
             createPortal.RestarPortales();
+            audioSource.Play();
         }
     }
 }

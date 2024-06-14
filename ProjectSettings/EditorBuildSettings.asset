@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: "Assets/Scenes/Men\xFAPrincipal.unity"
     guid: f5245814d2c740c4eaa22988030046a1
   - enabled: 1
+    path: Assets/Scenes/Comics/Comic1.unity
+    guid: 347d6ddd25304b84ba050ed820e16661
+  - enabled: 1
     path: Assets/Scenes/World1/Level_01.unity
     guid: 9695e7ec708640e4d9ccda2509ade524
   - enabled: 1
@@ -24,15 +27,24 @@ EditorBuildSettings:
     path: Assets/Scenes/World1/Level_05.unity
     guid: 437f55be1ba738a49ae1e67524a29139
   - enabled: 1
+    path: Assets/Scenes/Comics/Comic3.unity
+    guid: 48e538e9d7bb37d42ae769b6beadea6a
+  - enabled: 1
     path: Assets/Scenes/World2/Level_06.unity
-    guid: 131b4365257827047b7e0c82984677e3
+    guid: ab4bb6d7c6294ce43b02acae417da344
   - enabled: 1
     path: Assets/Scenes/World2/Level_07.unity
-    guid: c3171e6d00f543d41939a43a0d92df7a
+    guid: 3f81eac46b20c3c438e0cf8bb4438997
   - enabled: 1
     path: Assets/Scenes/World2/Level_08.unity
     guid: a5206e099ea8b6644b2459a8e677ddbd
   - enabled: 1
     path: Assets/Scenes/World2/Level_09.unity
     guid: c72a0b6b9113b1f4891631671ff0132d
+  - enabled: 1
+    path: Assets/Scenes/World2/Level_10.unity
+    guid: bd2b53880f758d44e83a589b2c4a6803
+  - enabled: 1
+    path: Assets/Scenes/Comics/Comic_End.unity
+    guid: 1b39c3a78e9875c45a861b416b7f1608
   m_configObjects: {}

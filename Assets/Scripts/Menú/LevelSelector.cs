@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class LevelSelector : MonoBehaviour
     public float maxScrollX = 1000f; // Límite máximo de desplazamiento en X
     public Button leftButton; // Botón de desplazamiento hacia la izquierda
     public Button rightButton; // Botón de desplazamiento hacia la derecha
+    public float scrollDuration = 0.5f; // Duración del desplazamiento suave
+
+    private Coroutine currentCoroutine;
 
     private void Start()
     {
@@ -20,21 +24,49 @@ public class LevelSelector : MonoBehaviour
     private void ScrollLeft()
     {
         // Calcular la nueva posición del contenedor
-        float newX = levelsContainer.anchoredPosition.x + scrollAmount;
+        float targetX = levelsContainer.anchoredPosition.x + scrollAmount;
         // Limitar el desplazamiento a la izquierda
-        newX = Mathf.Clamp(newX, minScrollX, maxScrollX);
-        // Desplazar el contenedor hacia la izquierda
-        levelsContainer.anchoredPosition = new Vector2(newX, levelsContainer.anchoredPosition.y);
+        targetX = Mathf.Clamp(targetX, minScrollX, maxScrollX);
+        // Iniciar la corutina para desplazamiento suave
+        StartSmoothScroll(targetX);
     }
 
     private void ScrollRight()
     {
         // Calcular la nueva posición del contenedor
-        float newX = levelsContainer.anchoredPosition.x - scrollAmount;
+        float targetX = levelsContainer.anchoredPosition.x - scrollAmount;
         // Limitar el desplazamiento a la derecha
-        newX = Mathf.Clamp(newX, minScrollX, maxScrollX);
-        // Desplazar el contenedor hacia la derecha
-        levelsContainer.anchoredPosition = new Vector2(newX, levelsContainer.anchoredPosition.y);
+        targetX = Mathf.Clamp(targetX, minScrollX, maxScrollX);
+        // Iniciar la corutina para desplazamiento suave
+        StartSmoothScroll(targetX);
+    }
+
+    private void StartSmoothScroll(float targetX)
+    {
+        // Detener la corutina actual si ya hay una corriendo
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        // Iniciar una nueva corutina
+        currentCoroutine = StartCoroutine(SmoothScroll(targetX));
+    }
+
+    private IEnumerator SmoothScroll(float targetX)
+    {
+        Vector2 startPos = levelsContainer.anchoredPosition;
+        Vector2 endPos = new Vector2(targetX, levelsContainer.anchoredPosition.y);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < scrollDuration)
+        {
+            levelsContainer.anchoredPosition = Vector2.Lerp(startPos, endPos, elapsedTime / scrollDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Asegurarse de que el contenedor llegue a la posición final exacta
+        levelsContainer.anchoredPosition = endPos;
     }
 
     private void OnDrawGizmos()

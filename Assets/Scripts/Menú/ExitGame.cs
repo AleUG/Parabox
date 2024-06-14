@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ExitGame : MonoBehaviour
 {
+    public float timeDelayExit;
     public void Cerrar()
     {
         Debug.Log("Saliendo del juego");
+        StartCoroutine(DelayExit(timeDelayExit));
+    }
+
+    private IEnumerator DelayExit(float time)
+    {
+        yield return new WaitForSeconds(time);
         Application.Quit(); // Cierra la aplicación
 
         {

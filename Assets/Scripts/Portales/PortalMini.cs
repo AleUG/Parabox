@@ -9,12 +9,14 @@ public class PortalMini : MonoBehaviour
     private bool isCooldown = false;
 
     private Animator animator;
+    private AudioSource audioSource;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PortalSystems>();
         dragNDrop = GetComponent<DragNDrop>();
         animator = GameObject.Find("PanelMini").GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,6 +37,7 @@ public class PortalMini : MonoBehaviour
             }
 
             animator.SetTrigger("enter");
+            audioSource.Play();
 
             StartCoroutine(CooldownRoutine());
         }
@@ -42,7 +45,7 @@ public class PortalMini : MonoBehaviour
 
     private IEnumerator CooldownRoutine()
     {
-        yield return new WaitForSeconds(1f); // Espera 1 segundo antes de permitir otro cambio
+        yield return new WaitForSeconds(0.75f); // Espera 1 segundo antes de permitir otro cambio
         isCooldown = false;
     }
 }

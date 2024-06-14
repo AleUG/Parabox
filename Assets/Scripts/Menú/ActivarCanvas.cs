@@ -8,7 +8,11 @@ public class ActivarCanvas : MonoBehaviour
 
     private void Start()
     {
-        botonActivarDesactivar.onClick.AddListener(ActivarDesactivarCanvasObjetivo);
+        if (botonActivarDesactivar != null)
+        {
+            botonActivarDesactivar.onClick.AddListener(ActivarDesactivarCanvasObjetivo);
+        }
+
     }
 
     private void ActivarDesactivarCanvasObjetivo()
