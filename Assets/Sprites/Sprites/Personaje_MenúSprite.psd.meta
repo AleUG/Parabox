@@ -106,8 +106,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 546
-      y: 1110
+      x: 4
+      y: 2615
       width: 402
       height: 653
     spriteID: 9df9c0cc6aa59504f8c7b3dcc67710d5
@@ -437,7 +437,7 @@ ScriptedImporter:
     - {x: 26, y: 27}
     - {x: 27, y: 28}
     tessellationDetail: 0
-    uvTransform: {x: 546, y: 1110}
+    uvTransform: {x: 4, y: 2615}
     spritePosition: {x: 521, y: 246}
   - name: leg2
     originalName: 
@@ -446,8 +446,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 956
-      y: 1110
+      x: 4
+      y: 3276
       width: 402
       height: 653
     spriteID: f762a6416e079f64ea7b8886f1722a56
@@ -777,7 +777,7 @@ ScriptedImporter:
     - {x: 26, y: 27}
     - {x: 27, y: 28}
     tessellationDetail: 0
-    uvTransform: {x: 956, y: 1110}
+    uvTransform: {x: 4, y: 3276}
     spritePosition: {x: 1283, y: 246}
   - name: oreja2
     originalName: 
@@ -786,8 +786,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1366
-      y: 1110
+      x: 4
+      y: 1098
       width: 332
       height: 746
     spriteID: 0ab3993d8ace8844e94c425fa0a23b5e
@@ -1337,7 +1337,7 @@ ScriptedImporter:
     - {x: 46, y: 47}
     - {x: 47, y: 48}
     tessellationDetail: 0
-    uvTransform: {x: 1366, y: 1110}
+    uvTransform: {x: 4, y: 1098}
     spritePosition: {x: 636, y: 1168}
   - name: oreja
     originalName: 
@@ -1346,8 +1346,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1706
-      y: 1110
+      x: 546
+      y: 1852
       width: 331
       height: 746
     spriteID: 794f4a02c90700247b38d09b498f4b41
@@ -1897,7 +1897,7 @@ ScriptedImporter:
     - {x: 46, y: 47}
     - {x: 47, y: 48}
     tessellationDetail: 0
-    uvTransform: {x: 1706, y: 1110}
+    uvTransform: {x: 546, y: 1852}
     spritePosition: {x: 1239, y: 1168}
   - name: box
     originalName: 
@@ -2304,7 +2304,7 @@ ScriptedImporter:
     - {x: 33, y: 34}
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 518, y: 339}
+    spritePosition: {x: 518, y: 351}
   - name: tapa1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2313,7 +2313,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 1110
+      y: 1852
       width: 534
       height: 755
     spriteID: 4f5c07368f785ec4395216d7d4b6847d
@@ -2643,7 +2643,7 @@ ScriptedImporter:
     - {x: 26, y: 27}
     - {x: 27, y: 28}
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 1110}
+    uvTransform: {x: 4, y: 1852}
     spritePosition: {x: 99, y: 687}
   - name: tapa2
     originalName: 
@@ -3143,7 +3143,7 @@ ScriptedImporter:
     parentIndex: 3
     spriteID: 9df9c0cc6aa59504f8c7b3dcc67710d5
     layerID: 87
-    mosaicPosition: {x: 546, y: 1110}
+    mosaicPosition: {x: 4, y: 2615}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -3153,7 +3153,7 @@ ScriptedImporter:
     parentIndex: 3
     spriteID: f762a6416e079f64ea7b8886f1722a56
     layerID: 86
-    mosaicPosition: {x: 956, y: 1110}
+    mosaicPosition: {x: 4, y: 3276}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -3173,7 +3173,7 @@ ScriptedImporter:
     parentIndex: 6
     spriteID: 0ab3993d8ace8844e94c425fa0a23b5e
     layerID: 83
-    mosaicPosition: {x: 1366, y: 1110}
+    mosaicPosition: {x: 4, y: 1098}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -3183,7 +3183,7 @@ ScriptedImporter:
     parentIndex: 6
     spriteID: 794f4a02c90700247b38d09b498f4b41
     layerID: 82
-    mosaicPosition: {x: 1706, y: 1110}
+    mosaicPosition: {x: 546, y: 1852}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -3223,7 +3223,7 @@ ScriptedImporter:
     parentIndex: 11
     spriteID: 4f5c07368f785ec4395216d7d4b6847d
     layerID: 76
-    mosaicPosition: {x: 4, y: 1110}
+    mosaicPosition: {x: 4, y: 1852}
     flatten: 0
     isImported: 1
     isVisible: 1
